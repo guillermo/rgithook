@@ -1,4 +1,3 @@
-(in /home/guillermo/Documentos/rgithook)
 Gem::Specification.new do |s|
   s.name = %q{rgithook}
   s.version = "0.0.1"
