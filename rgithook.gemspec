@@ -24,7 +24,6 @@ You can also delete it if you don't want it.
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{rgithook}
   s.rubygems_version = %q{1.2.0}
-  s.signing_key = %q{/home/guillermo/.gem/gem-private_key.pem}
   s.summary = %q{description of gem}
   s.test_files = ["test/test_helper.rb", "test/test_rgithook.rb"]
 
