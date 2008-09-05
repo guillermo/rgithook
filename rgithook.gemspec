@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["=Guillermo \303\201lvarez"]
   s.cert_chain = ["/home/guillermo/.gem/gem-public_cert.pem"]
-  s.date = %q{2008-09-04}
+  s.date = %q{2008-09-05}
   s.description = %q{description of gem}
   s.email = ["=guillermo@cientifico.net"]
-  s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "website/index.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "lib/rgithook.rb", "lib/rgithook/version.rb", "script/console", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_helper.rb", "test/test_rgithook.rb", "website/index.html", "website/index.txt", "website/javascripts/rounded_corners_lite.inc.js", "website/stylesheets/screen.css", "website/template.html.erb"]
+  s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt"]
+  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "lib/rgithook.rb", "lib/rgithook/version.rb", "lib/rgithook/html.rb", "lib/rgithook/githook.rb", "test/test_helper.rb", "test/test_rgithook.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://rgithook.rubyforge.org}
   s.post_install_message = %q{
