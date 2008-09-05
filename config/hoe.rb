@@ -34,7 +34,7 @@ end
 REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
-VERS = Rgithook::VERSION::STRING + (REV ? ".#{REV}" : "")
+VERS = RGitHook::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', 'rgithook documentation',
     "--opname", "index.html",
     "--line-numbers",
