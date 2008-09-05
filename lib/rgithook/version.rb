@@ -1,4 +1,4 @@
-module Rgithook
+module RGitHook
   module VERSION #:nodoc:
     MAJOR = 0
     MINOR = 0
