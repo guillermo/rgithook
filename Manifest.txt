@@ -1,9 +1,0 @@
-History.txt
-License.txt
-Manifest.txt
-PostInstall.txt
-README.rdoc
-lib/rgithook.rb
-lib/rgithook/version.rb
-lib/rgithook/html.rb
-lib/rgithook/githook.rb
