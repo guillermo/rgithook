@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+if File.exist?(file = File.join(File.dirname(File.expand_path(__FILE__)), '..', 'lib','rgithook.rb'))
+  puts "Using development rgithook"
+  require file
+else
+  require 'rubygems'
+  require 'rgithook'
+end
+
+
+
+RGitHook::CommandLine.execute(ARGV)
