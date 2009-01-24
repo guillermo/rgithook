@@ -1,14 +1,11 @@
 $:.unshift File.dirname(__FILE__)
 begin
-  require 'erb'
-  require 'fileutils'
   
   require 'rubygems'
   gem 'mojombo-grit'
   require 'grit'
   
   require File.join('rgithook', 'runner')
-  require File.join('rgithook', 'commands')
   require File.join('rgithook', 'hook')
   require File.join('rgithook', 'rgithook')
   RGitHook.autoload(:Plugin, File.join('rgithook','plugin'))
@@ -18,7 +15,7 @@ begin
     begin
       require plugin
     rescue LoadError => e 
-      puts "Failed to load #{plugin}\n#{e.to_s}"
+      puts "Failed to load some plugin #{plugin}\n#{e.to_s}"
     end
   end
   

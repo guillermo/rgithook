@@ -1,0 +1,16 @@
+<div style='margin: 5px 0px 10px 20px'>
+  <div style='font-weight: bolder;display: inline;'><%=a_path.html_escape%></div>
+  <% if new_file %>
+  <div style='color: green; display: inline;'>New file</div>
+  <% elsif deleted_file %>
+  <div style='color:red; display: inline;'>Deleted file</div>
+  <% end %>
+  <% unless deleted_file %>
+  <div style='width: 100%;'>
+    <pre style='padding:0;line-height:1.2em;margin:0; overflow: auto; background: #ffc; border: 1px #fc0 solid; padding: 6px;'>
+      <%=diff.html_escape.color_diff%>
+    </pre>
+  </div>
+  <% end %>
+</div>
+    

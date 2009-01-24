@@ -1,0 +1,26 @@
+<div name='<%=id%>'>
+  <dl style='font-family: verdana,arial,helvetica,sans-serif; font-size: 10pt; border: 1px #006 solid; background: #369; padding: 6px; color: #fff;'>
+    <dt style='float: left; width: 6em; font-weight: bold;'>sha1:</dt>
+    <dd><%= id %></dd>
+    
+    <dt style='float: left; width: 6em; font-weight: bold;'>author:</dt>
+    <dd><a href="mailto:<%=author.email%>"><%=author.name.html_escape%></a></dd>
+
+    
+    <dt style='float: left; width: 6em; font-weight: bold;'>date:</dt>
+    <dd><%=date.to_s.html_escape%></dd>
+    
+    <dt style='float: left; width: 6em; font-weight: bold;'>message:</dt>
+    <dd><%=message.html_escape%></dd>
+    <!--
+    <% stats = @repo.commit_stats(id).first[1].to_hash %>
+    <% stats.each do |key,value| %>
+    <dt><%=key%></dt><dd><%=value%></dd>
+    <% end %>
+    -->
+  </dl>
+
+  <div><%=diffs.map{|d| d.to_html}%></div>
+</div>
+
+

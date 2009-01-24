@@ -9,7 +9,6 @@ lib/plugins/spec/rgithook_formatter.rb
 lib/plugins/spec/spec_result.rb
 lib/plugins/spec.rb
 lib/plugins/temp.rb
-lib/rgithook/#command_line.rb#
 lib/rgithook/command_line.rb
 lib/rgithook/hook.rb
 lib/rgithook/plugin.rb
@@ -21,13 +20,11 @@ lib/rgithook.rb
 Manifest
 Rakefile
 README.rdoc
-README.txt
-rgithook3.org
 test/plugins/test_html.rb
 test/plugins/test_spec.rb
 test/test_command_line.rb
 test/test_helper.rb
 test/test_hook.rb
+test/test_plugin.rb
 test/test_rgithook.rb
 test/test_runner.rb
-test.rb
