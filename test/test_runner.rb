@@ -20,6 +20,9 @@ module RGitHook
       end
       
       assert_instance_of Runner, Runner.new(@repo)
+      runner = Runner.new @repo
+      assert runner.options[:SamplePlugin][:test_option], :default_value
+      assert runner.options[:SamplePlugin][:test_group][:test_option_group_option], :default_value
     end
     
     def test_on
@@ -69,20 +72,11 @@ module RGitHook
       assert_equal runner.run_background_hooks(hook), [20,20]
     end
     
+    def test_options
+      runner = Runner.new @repo
+      
+      assert runner.options[:SamplePlugin][:test_option], :default_value
+      assert runner.options[:SamplePlugin][:test_group][:test_option_group_option], :default_value
+    end 
   end
-  
 end
-
-
-    # 
-    # def run_hooks(hook_name, *args)
-    #   @hooks[hook_name.to_sym] && @hooks[hook_name.to_sym].each do |hook|
-    #     hook.call(*args)
-    #   end
-    # end
-    # 
-    # 
-    # def repo
-    #   @repo
-    # end
-    # 

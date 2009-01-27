@@ -20,6 +20,7 @@ lib/rgithook.rb
 Manifest
 Rakefile
 README.rdoc
+test/fixtures/sample_plugin.rb
 test/plugins/test_html.rb
 test/plugins/test_spec.rb
 test/test_command_line.rb

@@ -11,6 +11,7 @@ module RGitHook
   update)
 
   class RGitHook    
+    attr_reader :repo
 
     # Install RGitHook in the given repo/path
     # if confirmation_needed it will ask to overwrite the existing hooks
@@ -95,6 +96,10 @@ module RGitHook
       @runner.run_hooks(:post_receive,oldrev,newrev,ref)
     end
 
+    def save_plugin_options
+      File.new(plugin_conf_file,'w') {|f| f.write @runner.options.to_yaml }
+    end
+
     private
 
     def self.prompt(message)
@@ -103,7 +108,6 @@ module RGitHook
         return 'yY'.include?($1) ? true : false if $stdin.gets.strip =~ /([yYnN])/
       end
     end
-
 
 
     def self.parse_path(path)
@@ -121,8 +125,7 @@ module RGitHook
     # Contains the current runner with the hooks
     attr_reader :runner
 
-    private
-
+    
     def self.install_template(path_or_repo, from,to=nil,mode = 0600)
       to = from if to.nil?
       repo = parse_path(path_or_repo)
@@ -135,20 +138,22 @@ module RGitHook
     # Initialize a new instance of rgithook in the given repo or path
     def initialize(repo_or_path)
       @repo = self.class.parse_path(repo_or_path)
-      @runner = read_config(@repo)
+      
+      hooks_text = File.file?(hooks_file) ? File.read(hooks_file) : ''
+
+      @runner    = Runner.new(@repo)
+      @runner.load_options(YAML.load(File.read(plugin_conf_file))) if File.file?(plugin_conf_file)
+      
+      eval(hooks_text, runner.binding, hooks_file,0)
     end
-
-
-    def read_config(repo)
-      file_name = File.join(repo.path, 'hooks', 'rgithook.rb')
-      conf      = File.file?(file_name) ? File.read(file_name) : ''
-      runner    = Runner.new(repo)
-
-      eval(conf, runner.binding, file_name,0)
-      runner
+    
+    def hooks_file
+      File.join(@repo.path, 'hooks', 'rgithook.rb')
     end
-
-
+    
+    def plugin_conf_file
+      File.join(@repo.path,'hooks','rgithook.yaml')
+    end
+    
   end
-
 end

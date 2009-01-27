@@ -4,9 +4,11 @@ module RGitHook
 
   class RGitHookTest < Test::Unit::TestCase
     def setup
-      runner = mock('runner')
-      runner.stubs(:binding)
-      Runner.stubs(:new).returns(runner)
+      @runner = mock('runner')
+      @runner.stubs(:binding)
+      @repo = mock('grit_repo')
+      @repo.stubs(:path).returns('path')
+      Runner.stubs(:new).returns(@runner)
     end
 
     def test_class_install
@@ -105,5 +107,40 @@ module RGitHook
       RGitHook.send(:install_template,:repo, 'from')
     end
 
+    def test_new
+      RGitHook.expects(:parse_path).with(@repo).returns(@repo)
+      File.expects(:file?).with('path/hooks/rgithook.rb').returns(false)
+      File.expects(:file?).with('path/hooks/rgithook.yaml').returns(true)
+      
+      File.expects(:read).with('path/hooks/rgithook.yaml').returns({:option => 1}.to_yaml)
+      @runner.expects(:load_options).with({:option => 1})
+      
+      Runner.expects(:new).with(@repo).returns(@runner)
+
+      RGitHook.new(@repo)
+    end
+    
+    
+    # def save_plugin_options
+    #       File.new(plugin_conf_file,'w') {|f| f.write @runner.options.to_yaml }
+    #     end
+    #     
+    def test_save_plugin_options
+      RGitHook.stubs(:parse_path).with(@repo).returns(@repo)
+      
+      options = {:option => 1}
+      @repo.stubs(:path).returns('path')
+      @runner.expects(:options).returns(options)
+      file = mock('IO')
+      file.expects(:write).with(options.to_yaml)
+      File.expects(:new).with('path/hooks/rgithook.yaml','w').yields(file)
+      
+      @rgithook = RGitHook.new(@repo)
+      @rgithook.save_plugin_options
+    end
+    
+
+    
+    
   end
 end
