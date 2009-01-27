@@ -1,17 +1,12 @@
 = RGitHook
 
-RGitHook is a simple but powerfull hook manager for git repository.
-It record hooks in a single file in GIT_DIR/hooks/rgithook and config hooks to use rgithook
-
-WARNING: Any existing hook will be overwrited
-
-To use just tape in your repo
-
-  rgithook --install
-
-To start editing your hooks
-
-rgithook --edit
+RGitHook is:
+  * GitHooks made easy
+  * Center all the hooks in one ruby file
+  * Plugin system for make concrete actions on hooks. (twitter, email, test, etc...)
+  
+You may want GINST. A configuration and web interface for projects
 
 = Install
 
+sudo gem install guillermo-rgithook
