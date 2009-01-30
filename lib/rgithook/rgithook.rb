@@ -77,6 +77,16 @@ module RGitHook
     #   self.class.installed_in? (@repo)
     # end
 
+    #Extract the projects name
+    def project_name
+      if @repo.bare
+        File.basename(@repo.path) =~ /(.*).git/
+        $1 || @repo.bare
+      else
+        File.basename(@repo.working_dir)
+      end
+    end
+      
     # Open the editor with the config file
     def self.call_editor(path_or_repo)
       repo = parse_path path_or_repo

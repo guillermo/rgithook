@@ -49,8 +49,10 @@ class IntegrationTest < Test::Unit::TestCase
     end
   end
   
-  def test_hooks
-    
+  def test_project_name
+    with_sample_rgithook do
+      assert_match /^rgithook-(.*)/, @rgithook.project_name
+    end
   end
   
   def test_plugin_options
