@@ -86,7 +86,22 @@ module RGitHook
         File.basename(@repo.working_dir)
       end
     end
-      
+    
+    # Returns the path of the current repo
+    def path
+      @repo.path
+    end
+    
+    # Returns the path of the working dir or nil if it is a bare repo
+    def working_path
+      @repo.working_dir
+    end
+    
+    # Returns true on bare repo. 
+    def bare?
+      @repo.bare
+    end
+        
     # Open the editor with the config file
     def self.call_editor(path_or_repo)
       repo = parse_path path_or_repo
