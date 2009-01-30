@@ -1,7 +1,8 @@
 module RGitHook
   class Runner
-    public :binding
 
+    attr_reader :binding
+    
     def initialize(repo) #::nodoc::
       raise ArgumentError unless repo.is_a? ::Grit::Repo
       @_repo = repo
@@ -113,6 +114,18 @@ module RGitHook
       end
     end
 
+
+    # Run arbitrary code in runner context
+    def run(code,file=nil,line=nil)
+      file,line = caller.first.split(':') unless file && line
+      eval(code,binding,file,line.to_i)
+    end
+
+    def load(file)
+      hooks = File.file?(file) && File.read(file) || '' 
+      eval(hooks, binding, file,0)      
+    end
+    
     # Execute all the hooks defined in the configuration file
     # Return a two dimension array. The first element is the outputs of the foreground_hooks. 
     # The second element is another array with the pids of the background_hooks
@@ -120,6 +133,9 @@ module RGitHook
     def run_hooks(hook_name, *args)
       [run_foreground_hooks(hook_name,*args),run_background_hooks(hook_name,*args)]
     end
+
+    
+    
     
     def run_foreground_hooks(hook_name,*args)
       ret_vals = []
@@ -128,7 +144,7 @@ module RGitHook
       end
       ret_vals      
     end
-    
+
     # Execute all the hooks in a new process
     # Return an array with the pids of each hook process
     def run_background_hooks(hook_name, *args)
@@ -138,7 +154,7 @@ module RGitHook
       end
       ret_vals      
     end
-    
+
     def repo
       @_repo
     end
@@ -151,10 +167,11 @@ module RGitHook
     def options
       @options
     end
-    
+
     # ::nodoc::
-    def load_options(options_hash)
-      @options = options_hash
+    def load_options(options_file)
+      @options = YAML.load(File.read(options_file)) if File.file?(options_file)
+      @options ||={}
     end    
   end
 end

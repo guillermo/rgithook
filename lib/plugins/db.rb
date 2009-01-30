@@ -2,6 +2,7 @@ require 'dbm'
 
 class CommitDB < RGitHook::Plugin
   
+  
   module GritCommit
     # Read properties from a commit
     def properties

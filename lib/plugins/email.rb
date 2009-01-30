@@ -3,14 +3,17 @@ require 'socket'
 
 class Email < RGitHook::Plugin
 
+  option :destination, "Destination of email functions", %x(who am i), [String]
+
   module RunnerMethods
     include TMail
+    
     
     # Send a multipart html email, converting html to text for plain_text emails
     # In Uses Tmail
     # 
-    #   mail('guillermo@cientifico.net', 'test resutls', '<html><body>Good results!</body></html>')
-    def mail(to,subject,body)
+    #   mail('test resutls', '<html><body>Good results!</body></html>')
+    def email(subject,body,to=nil)
       part = Mail.new
       part.set_content_type "text", "html"
       part.body = body.to_html

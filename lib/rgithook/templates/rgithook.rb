@@ -1,11 +1,15 @@
-# These file is the mail file of RGitHook
-# All of the hooks that support git can be written here
-# For example:
-
-#   on :update do
-#     update_local_repo
+# RGitHook hooks_file
+# To define a hook just type:
+# 
+#   on :hook_name do |hook_params|
+#     ... Actions ... 
 #   end
-
+#
+# Just simple.
+#   
+# There is a few factory-made plugins ready to use
+#  * test (spec/cucumber/test::unit)
+#  * db Persisten layer for commit properties.
 
 
 # Used to check the commit log message of of a apply patch
@@ -30,6 +34,11 @@ end
 # Called when a the current repo recive commits from external repository
 # For example: A remote push
 on :post_receive do |old_commit, new_commit, ref|
+  
+  repo.commits_between(old_commit,new_commit) do |commit|
+    test(commit)
+  end
+    
   # These is the best hook to track changes in a repository
   # run test, deploy to staging, mail diffs, etc...
   return 0

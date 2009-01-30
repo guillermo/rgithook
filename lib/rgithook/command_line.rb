@@ -11,9 +11,11 @@ module RGitHook
       
       case options.command
       when :install,:fetch,:edit
-        exit RGitHook.new(options.path).send(options.command).to_i
+        ret_val = RGitHook.new(options.path).send(options.command)
+        exit 0
       when :version
         puts 'Version 3.0.0'
+        exit 0
       end
       
     rescue Grit::InvalidGitRepositoryError

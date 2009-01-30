@@ -15,20 +15,50 @@ module RGitHook
 
     # Install RGitHook in the given repo/path
     # if confirmation_needed it will ask to overwrite the existing hooks
-    def self.install(path_or_repo, confirmation_needed=true)
+    def self.install(path_or_repo, verbose=true)
       repo = parse_path path_or_repo
 
-      if !confirmation_needed || (confirmation_needed && prompt('All active hooks will be erase. Continue?'))
+      if verbose
+        puts "Welcome to RGitHook.
 
-        hooks_dir = File.join(repo.path,'hooks')
-        FileUtils.mkdir hooks_dir unless File.exist? hooks_dir
+        These will install rgithook for the next Git Repo
+        /Users/guillermo/Sites/
 
-        install_template(repo,'rgithook.rb')
+        These will overwrite all the current hooks and
+        create .git/hooks/rgithook.rb file.
 
-        HOOKS.each do |hook_name|
-          hook_name.tr!('_','-')
-          install_template(repo,'hook.rb',hook_name,0555)
-        end
+        In that file you will define your hooks in ruby.
+        ".gsub(/^        /,'')
+        return -1 unless prompt('Continue?')
+      end
+      hooks_dir = File.join(repo.path,'hooks')
+      FileUtils.mkdir hooks_dir unless File.exist? hooks_dir
+
+      install_template(repo,'rgithook.rb')
+
+      HOOKS.each do |hook_name|
+        install_template(repo,'hook.rb',hook_name.tr('_','-'),0555)
+      end
+      
+      if verbose
+        puts "RGitHook Installed.
+        Now you can:
+          * Edit the hooks file by running
+              rgithook --edit 
+
+          * Install the hooks file inside the repo. So all
+            contributors can run hooks.
+              mv .git/hooks/rgithook.rb ./config/rgithook.rb && \
+              ln -s ./config/rgithook.rb
+
+              or
+
+              mv .git/hooks/rgithook.rb ./config/rgithook.rb && \
+              ln -s ./.rgithook.rb
+          
+          * Fetch changes from origin
+              rgithook --fetch
+        ".gsub(/^        /,'')
       end
     end  
 
@@ -69,19 +99,21 @@ module RGitHook
       self.class.conf_file(@repo)
     end
 
+    #TODO: Make a reload method, to reload conf_file and hooks_file
 
     HOOKS.each do |hook_name|
+      start_line = __LINE__
       hook_methods =<<-EOHM
       def self.#{hook_name}(path_or_repo,*args)
         RGitHook.new(path_or_repo).#{hook_name}(*args)
       end
       
       def #{hook_name}(*args)
-        @runner.run_hooks(#{hook_name.to_sym},*args)
+        @runner.run_hooks(:#{hook_name.to_sym},*args)
       end
       
       EOHM
-      eval(hook_methods,binding,__FILE__,__LINE__-10)
+      eval(hook_methods,binding,__FILE__,start_line+2)
     end
 
 
@@ -97,8 +129,14 @@ module RGitHook
     end
 
     def save_plugin_options
-      File.new(plugin_conf_file,'w') {|f| f.write @runner.options.to_yaml }
+      File.open(plugin_conf_file,'w') {|f| f.write @runner.options.to_yaml }
     end
+    
+    # Run some code in the runner binding
+    def run(code,file=nil,line=nil)
+      @runner.run(code,file,line)
+    end
+      
 
     private
 
@@ -130,7 +168,7 @@ module RGitHook
       to = from if to.nil?
       repo = parse_path(path_or_repo)
 
-      from = File.join(File.dirname(__FILE__),'templates',from)
+      from = File.join(PATH,'rgithook','templates',from)
       to   = File.join(repo.path,'hooks',to)
       FileUtils.install(from,to, :mode => mode)
     end
@@ -138,13 +176,10 @@ module RGitHook
     # Initialize a new instance of rgithook in the given repo or path
     def initialize(repo_or_path)
       @repo = self.class.parse_path(repo_or_path)
-      
-      hooks_text = File.file?(hooks_file) ? File.read(hooks_file) : ''
-
+      Plugin.load!      
       @runner    = Runner.new(@repo)
-      @runner.load_options(YAML.load(File.read(plugin_conf_file))) if File.file?(plugin_conf_file)
-      
-      eval(hooks_text, runner.binding, hooks_file,0)
+      @runner.load_options(plugin_conf_file)
+      @runner.load(hooks_file)
     end
     
     def hooks_file

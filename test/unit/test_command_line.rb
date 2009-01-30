@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__)+'/../test_helper'
 
 module RGitHook
   class CommandLineTest < Test::Unit::TestCase
@@ -11,7 +11,6 @@ module RGitHook
     
     
     def test_install
-      argv=["--install"]
       RGitHook.expects(:new).with('pwd').returns(@rgithook)
       @rgithook.expects(:install)
       CommandLine.expects(:exit).with(0)

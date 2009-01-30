@@ -1,0 +1,18 @@
+
+
+* bloques con returns petan
+* Se lee la configuracion tres veces (tres hooks)
+* Relación entre comandos y hooks
+  * commit
+     1. Executing pre-commit hook
+     2. Executing prepare-commit-msg hook
+     3. Executing commit-msg hook
+     4. (commit is made)
+     5. Executing post-commit hook
+  * push 
+     1. Executing update hook
+     2. (the repo is now updated) 
+     3. Executing post-receive hook
+     4. Executing post-update hook
+
+

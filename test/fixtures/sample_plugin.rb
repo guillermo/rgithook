@@ -1,3 +1,5 @@
+class SamplePluginException < Exception ; end
+
 module OtherApp
   class SamplePlugin < ::RGitHook::Plugin
 
@@ -10,6 +12,10 @@ module OtherApp
     module RunnerMethods
       def test_method
         'test_result'
+      end
+      
+      def raised_method
+        raise SamplePluginException
       end
     end
 

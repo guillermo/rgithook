@@ -1,5 +1,11 @@
 $:.unshift File.dirname(__FILE__)
+
 begin
+
+  module RGitHook
+    VERSION='3.0.0'
+    PATH=File.dirname(File.expand_path(__FILE__))
+  end
   
   require 'rubygems'
   gem 'mojombo-grit'
@@ -8,8 +14,8 @@ begin
   require File.join('rgithook', 'runner')
   require File.join('rgithook', 'hook')
   require File.join('rgithook', 'rgithook')
-  RGitHook.autoload(:Plugin, File.join('rgithook','plugin'))
-  RGitHook.autoload(:CommandLine, File.join('rgithook','command_line'))
+  RGitHook.autoload(:Plugin, File.join(RGitHook::PATH,'rgithook','plugin'))
+  RGitHook.autoload(:CommandLine, File.join(RGitHook::PATH,'rgithook','command_line'))
 
   Dir.glob(File.join(File.dirname(__FILE__),'plugins','*.rb')).each do |plugin|
     begin
@@ -19,9 +25,6 @@ begin
     end
   end
   
-  module RGitHook
-    VERSION='3.0.0'
-  end
 
 rescue LoadError => e
   puts 'Imposible to load some gem'
