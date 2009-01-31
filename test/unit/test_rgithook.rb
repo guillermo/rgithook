@@ -13,19 +13,9 @@ module RGitHook
       Runner.stubs(:new).returns(@runner)
     end
 
-
-    # # Run some code in the runner binding
-    # def run(&block)
-    #   @runner.run {yield}
-    # end
-    #   
-
     def test_run
-      repo = mock_repo
-      RGitHook.stubs(:parse_path).with(:repo).returns(repo)
       @runner.expects(:run).with('code',nil,nil).returns(:done)
-      
-      assert_equal :done,RGitHook.new(:repo).run('code')
+      assert_equal :done, create_rgithook_instance.run('code')
     end
     
     
@@ -41,32 +31,32 @@ module RGitHook
         RGitHook.install(:repo,false)
     end
 
+
+
+
     def test_install
-        repo = mock('grit_repo')
-        repo.stubs(:path).returns('path')
-        RGitHook.stubs(:parse_path).with(:repo).returns(repo)
-        RGitHook.expects(:install).with(repo,true).once.returns(:return_value)
-        assert_equal RGitHook.new(:repo).install, :return_value
+        RGitHook.expects(:install).with(@repo,true).once.returns(:return_value)
+        assert_equal create_rgithook_instance.install, :return_value
     end
 
 
     def test_class_call_editor
-      repo = mock('grit_repo')
-      repo.stubs(:path).returns('path')
-      RGitHook.stubs(:parse_path).with(:repo).returns(repo)
-
+      RGitHook.stubs(:parse_path).with(:repo).returns(mock_repo)
       RGitHook.expects(:conf_file).returns(:file)
       RGitHook.expects(:system).with('vi',:file )
       RGitHook.call_editor(:repo)
     end
 
-    def test_call_editor
-      repo = mock('grit_repo')
-      repo.stubs(:path).returns('path')
-      RGitHook.stubs(:parse_path).with(:repo).returns(repo)
-      
-      RGitHook.expects(:call_editor).with(repo).once
-      RGitHook.new(:repo).call_editor
+
+    # # Open the editor with the config file
+    # def call_editor
+    #   self.class.call_editor(@repo)
+    # end
+
+    def test_call_editor   
+      rgithook = create_rgithook_instance
+      RGitHook.expects(:call_editor).with(@repo).once
+      rgithook.call_editor   
     end
     
     HOOKS.each do |hook|
@@ -75,12 +65,9 @@ module RGitHook
         assert RGitHook.public_methods.include?('#{hook}'), '#{hook} must be exists in RGitHook'
       end
       
-      def test_class_#{hook}
-        repo = mock('grit_repo')
-        repo.stubs(:path).returns('path')
-        RGitHook.stubs(:parse_path).with(:repo).returns(repo)
-  
-        assert RGitHook.new(:repo).public_methods.include?('#{hook}'), '#{hook} must be exists in a RGitHook instance'
+      def test_#{hook}
+        @rgithook = create_rgithook_instance
+        assert @rgithook.public_methods.include?('#{hook}'), '#{hook} must be exists in a RGitHook instance'
       end
       EOT
       eval( hook_tests, binding, __FILE__, __LINE__-12)
