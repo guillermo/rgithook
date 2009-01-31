@@ -47,12 +47,6 @@ module RGitHook
       RGitHook.call_editor(:repo)
     end
 
-
-    # # Open the editor with the config file
-    # def call_editor
-    #   self.class.call_editor(@repo)
-    # end
-
     def test_call_editor   
       rgithook = create_rgithook_instance
       RGitHook.expects(:call_editor).with(@repo).once
@@ -141,9 +135,16 @@ module RGitHook
       @rgithook = RGitHook.new(@repo)
       @rgithook.save_plugin_options
     end
-    
 
+    def test_class_installed?
+      RGitHook.expects(:hooks_file).with(@repo).returns('path')
+      File.expects(:file?).with('path').returns(false)
+      assert !RGitHook.installed?(@repo)
+    end
     
-    
+    def test_installed?
+      RGitHook.expects(:installed?).with(@repo).returns(true)
+      assert create_rgithook_instance.installed?
+    end
   end
 end

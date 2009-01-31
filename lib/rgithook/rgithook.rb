@@ -68,14 +68,15 @@ module RGitHook
       self.class.install(@repo,confirmation_needed)
     end
 
-    # TODO: Checker about installation
-    # def self.installed_in? (path_or_repo)
-    #   raise NoMethodError, 'Unimplemented'
-    # end      
-    # 
-    # def installed?
-    #   self.class.installed_in? (@repo)
-    # end
+    # Return true if rgithook is installed in the given repo
+    def self.installed? (path_or_repo)
+      File.file?(hooks_file(path_or_repo))
+    end      
+    
+    # Return true if rgithook is installed
+    def installed?
+      self.class.installed?(@repo)
+    end
 
     #Extract the projects name
     def project_name
@@ -207,12 +208,20 @@ module RGitHook
       @runner.load(hooks_file)
     end
     
+    def self.hooks_file(repo_or_path)
+      File.join(parse_path(repo_or_path).path,'hooks','rgithook.rb')
+    end
+    
     def hooks_file
-      File.join(@repo.path, 'hooks', 'rgithook.rb')
+      self.class.hooks_file(@repo)
+    end
+    
+    def self.plugin_conf_file(repo_or_path)
+      File.join(parse_path(repo_or_path).path,'hooks','rgithook.yaml')
     end
     
     def plugin_conf_file
-      File.join(@repo.path,'hooks','rgithook.yaml')
+      self.class.plugin_conf_file(@repo)
     end
     
   end
