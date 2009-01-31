@@ -24,7 +24,6 @@ lib/rgithook.rb
 Manifest
 Rakefile
 README.rdoc
-rgithook.gemspec
 test/fixtures/sample_plugin.rb
 test/fixtures/sample_repo.zip
 test/integration/test_install.rb

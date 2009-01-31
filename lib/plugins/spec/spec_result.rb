@@ -1,5 +1,5 @@
 module RGitHook
-  class SpecResult
+   class SpecResult
 
-  end
+   end
 end

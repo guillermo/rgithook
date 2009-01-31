@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Guillermo \303\201lvarez"]
   s.cert_chain = ["/Users/guillermo/.rubygems/gem-public_cert.pem"]
-  s.date = %q{2009-01-30}
+  s.date = %q{2009-01-31}
   s.default_executable = %q{rgithook}
   s.description = %q{Ruby gem specify for git hooks.}
   s.email = %q{guillermo@cientifico.net}
