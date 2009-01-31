@@ -8,6 +8,18 @@ class Test::Unit::TestCase
     repo
   end
 
+  def create_rgithook_instance
+    # This is not really a rgithook_instance ;-P
+    ::RGitHook::Plugin.stubs(:load!)
+    ::RGitHook::RGitHook.stubs(:parse_path).with(@repo).returns(@repo)
+    ::RGitHook::Runner.stubs(:new).with(@repo).returns(@runner)
+    @runner.stubs(:load_options).with('plugin_conf_file')
+    @runner.stubs(:load).with('hooks_file')
+    ::RGitHook::RGitHook.any_instance.stubs(:plugin_conf_file).returns('plugin_conf_file')
+    ::RGitHook::RGitHook.any_instance.stubs(:hooks_file).returns('hooks_file')
+    ::RGitHook::RGitHook.new(@repo)
+  end
+  
   def in_temp_dir(&block)
     old_dir = Dir.pwd
     raise LocalJumpError, 'no block given' unless block_given?
