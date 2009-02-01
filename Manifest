@@ -30,6 +30,7 @@ test/integration/test_install.rb
 test/plugins/test_email.rb
 test/plugins/test_html.rb
 test/plugins/test_spec.rb
+test/plugins/test_test.rb
 test/test_helper.rb
 test/unit/test_command_line.rb
 test/unit/test_hook.rb
