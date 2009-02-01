@@ -3,19 +3,22 @@ module RGitHook
 
     module RunnerMethods
       def test(commit)
-        properties = {}
+        commit.properties['testing'] = true
+        commit.save_properties
         in_temp_commit(commit) do |new_repo|
           # Some hacks to migrate rails app if found.
           if File.file?('./config/environment.rb')
-            properties['db:migrate'] = rake('db:migrate')
-            properties['db:test:prepare'] = rake('db:test:prepare')
+            commit.properties['db:migrate'] = rake('db:migrate')
+            commit.properties['db:test:prepare'] = rake('db:test:prepare')
           end  
-          properties['spec'] = test_spec(repo) if File.directory? File.join(repo.working_dir,'spec')
-          properties['cucumber'] = test_cucumber(repo) if File.directory? File.join(repo.working_dir,'features')
-          properties['test_unit'] = test_unit(repo) if File.directory? File.join(repo.working_dir,'test')
+          commit.properties['spec'] = test_spec(repo) if File.directory? File.join(repo.working_dir,'spec')
+          commit.properties['cucumber'] = test_cucumber(repo) if File.directory? File.join(repo.working_dir,'features')
+          commit.properties['test_unit'] = test_unit(repo) if File.directory? File.join(repo.working_dir,'test')
         end
-        properties["status"] = %w(spec cucumber test_unit).map{|t|properties[t][1].exitstatus}.max
-        commit.properties = properties
+        commit.properties["status"] = %w(spec cucumber test_unit).map{|t|commit.properties[t][1].exitstatus}.max
+      ensure
+        commit.properties.delete 'testing'
+        commit.save_properties
       end
 
       def test_spec(repo)
