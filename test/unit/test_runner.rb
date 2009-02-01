@@ -37,7 +37,8 @@ module RGitHook
 
          mock = mock('test_class', :meth1 => 'meth1',:meth2 => 'meth2')
          runner.expects(:fork).times(2).returns(20)
-
+         Plugin.expects(:load!)
+         
          runner.on(hook) {mock.meth1}
          runner.on(hook) {mock.meth2}
 
