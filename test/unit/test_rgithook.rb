@@ -68,6 +68,15 @@ module RGitHook
          rgithook.expects(:post_receive).with(:a,:b,:c)
          RGitHook.post_receive(:dir,:a,:b,:c)
       end
+      
+      
+      
+      def test_post_receive
+        @rgithook = create_rgithook_instance
+        @runner.expects(:run_hooks).with(:post_receive,1,2,'3')
+
+        @rgithook.post_receive(1,2,'3')
+      end
 
       def test_install_template
          repo = mock('grit_repo')
