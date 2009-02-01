@@ -27,6 +27,7 @@ README.rdoc
 test/fixtures/sample_plugin.rb
 test/fixtures/sample_repo.zip
 test/integration/test_install.rb
+test/integration/test_pull_and_push.rb
 test/plugins/test_email.rb
 test/plugins/test_html.rb
 test/plugins/test_spec.rb
