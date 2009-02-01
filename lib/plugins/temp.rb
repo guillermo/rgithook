@@ -8,13 +8,20 @@ class Temp < RGitHook::Plugin
 
       # Run tests in a temp dir.
       # One argument is passed repo, that is a instance of the new Grit.repo
-      # You can use repo.path to see where is it
+      # You can use repo.path to see where is it.
+      # It receives a block with repo passed.
       def in_temp_commit(commit,&block)
          raise ArgumentError unless block_given?
          in_temp_dir do |temp_dir|
             repo_dir = File.join(temp_dir,commit.to_s)
-            %x(git clone --depth 1 #{@repo.path} #{repo_dir})
+            
+            old_dir = Dir.pwd
+            %x(git clone #{repo.path} #{repo_dir})
+            Dir.chdir repo_dir
+            
+            %x(git checkout #{commit.is_a?(::Grit::Commit) ? commit.sha : commit})
             yield ::Grit::Repo.new(repo_dir)
+            Dir.chdir old_dir
          end
       end
 
