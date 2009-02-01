@@ -12,8 +12,9 @@ begin
    require 'grit'
 
    require File.join('rgithook', 'runner')
-   require File.join('rgithook', 'hook')
+   
    require File.join('rgithook', 'rgithook')
+   require File.join('rgithook', 'hook')
    RGitHook.autoload(:Plugin, File.join(RGitHook::PATH,'rgithook','plugin'))
    RGitHook.autoload(:CommandLine, File.join(RGitHook::PATH,'rgithook','command_line'))
 
