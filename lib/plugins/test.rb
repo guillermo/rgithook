@@ -22,11 +22,11 @@ module RGitHook
       end
 
       def test_spec(repo)
-        [%x(spec `find spec/ -name '*.rb'`),$?]
+        [%x(spec spec/),$?]
       end
 
       def test_cucumber(repo)
-        [%x(cucumber -f html features/),$?]
+        [%x(cucumber features/),$?]
       end
 
       def test_unit(repo)
