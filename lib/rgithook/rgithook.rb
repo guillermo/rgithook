@@ -163,6 +163,22 @@ module RGitHook
          @runner.run(code,file,line)
       end
 
+      def self.hooks_file(repo_or_path)
+         File.join(parse_path(repo_or_path).path,'hooks','rgithook.rb')
+      end
+
+      def hooks_file
+         self.class.hooks_file(@repo)
+      end
+
+      def self.plugin_conf_file(repo_or_path)
+         File.join(parse_path(repo_or_path).path,'hooks','rgithook.yaml')
+      end
+
+      def plugin_conf_file
+         self.class.plugin_conf_file(@repo)
+      end
+
 
       private
 
@@ -208,21 +224,6 @@ module RGitHook
          @runner.load(hooks_file)
       end
 
-      def self.hooks_file(repo_or_path)
-         File.join(parse_path(repo_or_path).path,'hooks','rgithook.rb')
-      end
-
-      def hooks_file
-         self.class.hooks_file(@repo)
-      end
-
-      def self.plugin_conf_file(repo_or_path)
-         File.join(parse_path(repo_or_path).path,'hooks','rgithook.yaml')
-      end
-
-      def plugin_conf_file
-         self.class.plugin_conf_file(@repo)
-      end
 
    end
 end
