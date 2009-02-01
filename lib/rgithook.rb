@@ -3,7 +3,7 @@ $:.unshift File.dirname(__FILE__)
 begin
 
    module RGitHook
-      VERSION='3.0.0'
+      VERSION='3.0.2'
       PATH=File.dirname(File.expand_path(__FILE__))
    end
 

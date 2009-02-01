@@ -1,2 +1,3 @@
+v3.0.2 Hooks now returns a good value, so no action is stoped
 v3.0.1 New methods and new tests
 v3.0.0 Second big refactoring
