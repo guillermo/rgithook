@@ -18,7 +18,14 @@ class CommitDB < RGitHook::Plugin
       ensure
          db.close
       end
-
+      
+      def save_properties
+        db = get_commit_database
+        db[self.sha] = Marshal.dump(@properties || {})
+      ensure
+        db.close
+      end
+      
       private
       def get_commit_database
          ::DBM.new(File.join(@repo.path,'hooks','commitsdb'))
