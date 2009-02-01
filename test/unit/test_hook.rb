@@ -23,11 +23,9 @@ module RGitHook
          RGitHook.expects(:new).with('repo_path').returns(rgithook)
          STDIN.expects(:read).returns("aaaa bbbb ref1\ncccc dddd ref2\n")
 
-         rgithook.expects(:post_receive).with('aaaa','bbbb','ref1').returns(3)
-         rgithook.expects(:post_receive).with('cccc','dddd','ref2').returns(2)
-
-
-         assert_equal Hook.post_receive, 3
+         rgithook.expects(:post_receive).with('aaaa','bbbb','ref1').returns( [['meth1','5'],[20,20]])
+         rgithook.expects(:post_receive).with('cccc','dddd','ref2').returns( [['6',7],[20,20]])
+         assert_equal Hook.post_receive, 7
       end
    end
 end
