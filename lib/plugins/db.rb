@@ -1,13 +1,11 @@
 require 'dbm'
 
 class CommitDB < RGitHook::Plugin
-
-
    module GritCommit
       # Read properties from a commit
       def properties
          db = get_commit_database
-         @properties ||= (v = db[self.sha] and Marshal.load v)
+         @properties ||= (v = db[self.sha] and Marshal.load v) || {}
       ensure
          db.close
       end
