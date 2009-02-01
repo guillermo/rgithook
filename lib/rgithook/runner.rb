@@ -131,6 +131,7 @@ module RGitHook
       # The second element is another array with the pids of the background_hooks
       #   fg_hook_val, bg_hook_val = @runner.run_hooks(hook_name)
       def run_hooks(hook_name, *args)
+         Plugin.load!
          [run_foreground_hooks(hook_name,*args),run_background_hooks(hook_name,*args)]
       end
 
