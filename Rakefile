@@ -15,8 +15,7 @@ Echoe.new('rgithook') do |p|
   p.url            = "http://github.com/guillermo/rgithook2"
   p.author         = "Guillermo Álvarez"
   p.email          = "guillermo@cientifico.net"
-  p.runtime_dependencies = ["mojombo-grit"]
+  p.runtime_dependencies = ["grit","tmail"]
   p.ignore_pattern = ["tmp/*", "script/*", "demo?/*", "pkg/*", "*.tmproj","*.org"]
-  p.development_dependencies = ["mocha"]
 end
  
