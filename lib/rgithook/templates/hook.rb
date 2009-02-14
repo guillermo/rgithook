@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'rgithook'
+begin
+  require 'rgithook'
+  exit RGitHook::Hook.execute
 
-exit RGitHook::Hook.execute
+rescue LoadError
+  puts 'WARNING: RGitHook gem not installed. No rgithooks runned.'
+end
+
+exit 0
