@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: RGitHook::Runner</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript" 
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+	
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/rgithook/runner.rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/rgithook/runner.rb">lib/rgithook/runner.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#load">load</a></li>
+					
+					<li><a href="#load_options">load_options</a></li>
+					
+					<li><a href="#on">on</a></li>
+					
+					<li><a href="#repo">repo</a></li>
+					
+					<li><a href="#run">run</a></li>
+					
+					<li><a href="#run_background_hooks">run_background_hooks</a></li>
+					
+					<li><a href="#run_foreground_hooks">run_foreground_hooks</a></li>
+					
+					<li><a href="#run_hooks">run_hooks</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+	
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README.rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+			
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index 
+					<span class="search-toggle"><img src="../images/find.png" 
+						height="16" width="16" alt="[+]" 
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" 
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+				
+					<li><a href="../RGitHook.html">RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Base.html">RGitHook::Base</a></li>
+				
+				
+					<li><a href="../RGitHook/Base/ClassMethods.html">RGitHook::Base::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/CommandLine.html">RGitHook::CommandLine</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor.html">RGitHook::Editor</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor/ClassMethods.html">RGitHook::Editor::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Hook.html">RGitHook::Hook</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks.html">RGitHook::Hooks</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks/ClassMethods.html">RGitHook::Hooks::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation.html">RGitHook::Installation</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation/ClassMethods.html">RGitHook::Installation::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/RGitHook.html">RGitHook::RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Runner.html">RGitHook::Runner</a></li>
+				
+				
+					<li><a href="../RGitHook/TestCase.html">RGitHook::TestCase</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater.html">RGitHook::Updater</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater/ClassMethods.html">RGitHook::Updater::ClassMethods</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+			
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		
+		<h1 class="class">RGitHook::Runner</h1>
+		
+
+		<div id="description">
+			
+		</div>
+
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="binding-attribute-method" class="method-detail">
+				<a name="binding"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">binding</span><span 
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p class="missing-docs">(Not documented)</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+
+		
+			
+			<div id="load-method" class="method-detail">
+			
+				<a name="load"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">load</span><span 
+						class="method-args">(file)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="load-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 123</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>(<span class="ruby-identifier">file</span>)
+         <span class="ruby-identifier">hooks</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>) <span class="ruby-operator">||</span> <span class="ruby-value str">''</span>
+         <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">hooks</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">file</span>,<span class="ruby-value">0</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="load-options-method" class="method-detail">
+			
+				<a name="load_options"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">load_options</span><span 
+						class="method-args">(options_file)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+::nodoc::
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="load-options-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 161</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_options</span>(<span class="ruby-identifier">options_file</span>)
+         <span class="ruby-ivar">@options</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">options_file</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">options_file</span>)
+         <span class="ruby-ivar">@options</span> <span class="ruby-operator">||=</span>{}
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="on-method" class="method-detail">
+			
+				<a name="on"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">on</span><span 
+						class="method-args">(hook, options = {}, &amp;block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Define a hook that is executed when git-commands call these hook These is
+the very most important part of rgithook. These are all the hooks that you
+can run from git.
+</p>
+<pre>
+  # GIT_DIR/hooks/rgithook.rb (edit by rgithook -e)
+
+  #These will make that you will never can commit anthing that brake the tests
+  on :pre_commit do
+    system(rake test)
+  end
+
+  #These will send test results of the master branch when the repo is updated
+  on :post_receive do |old_rev,new_rev,ref|
+    if ref =~ /master$/
+      %x(rake test | mail -s 'Updated #{ref}' guillermo@cientifico.net)
+    end
+  end
+</pre>
+<p>
+Also you can make the hooks run in a separate process with background
+option
+</p>
+<pre>
+  #These will run in background
+  on :post_receive, :background =&gt; true do |old_rev,new_rev,ref|
+    run_tests(repo) # These is a long runing operation
+  end
+</pre>
+<p>
+The abailable hooks within git docs are:
+</p>
+<ul>
+<li><em>on <b>:applypatch_msg</b> do |commit_msg_path| </em>- Check the commit
+log message taken by applypatch from an e-mail message. The hook should
+exit with non-zero status after issuing an appropriate message if it wants
+to stop the commit. The hook is allowed to edit the commit message
+file.<br/> <em>commit_msg_path</em> - Is the file_path of the
+commit_message
+
+</li>
+<li><em>on <b>:commit_msg</b> do |commit_msg_path| </em>- Check the commit log
+message. Called by git-commit with one argument, the name of the file that
+has the commit message. The hook should exit with non-zero status after
+issuing an appropriate message if it wants to stop the commit. The hook is
+allowed to edit the commit message file. These hook have <b>params</b>:
+<em>commit_msg_path</em> - Is the file_path of the commit_message
+
+</li>
+<li><em>on <b>:post_commit</b> do </em>- Is called after a successful commit is
+made.
+
+</li>
+<li><em>on <b>:post_receive</b> do |old_rev,new_rev,ref| </em>- Is run after
+receive-pack has accepted a pack and the repository has been updated.
+<em>old_rev</em>/<em>new_rev</em> Is the string old/new sha1 commit id.
+<em>ref</em> is the string of the updated ref (<em>ref/head/master</em>).
+These is the perfect hook to put your code in a bare central repo.
+
+<pre>
+  # Send to the authors off the commits the results of their commits
+  on :post_receive do |old_rev,new_rev,ref|
+    if ref =~ /master$/
+      emails = repo.commits_between(old_rev, new_rev).map{|c| c.author.email}.uniq
+      test = %x(rake test)
+      emails.each do |mail|
+        IO.popen(&quot;mail -s 'Updated #{repo_name}' #{mail}&quot;,'w') {|mail| mail.write test}
+      end
+    end
+  end
+</pre>
+</li>
+<li><em>on <b>:post_update</b> do</em> - Prepare a packed repository for use
+over dumb transports.
+
+</li>
+<li><em>on <b>:pre_apply_patch</b> do</em> - Verify what is about to be
+committed by applypatch from an e-mail message. The hook should return non
+zero after issuing an appropriate message if it wants to stop the commit.
+
+</li>
+<li><em>on <b>:pre_commit</b> do</em> - Verify what is about to be committed.
+Called by git-commit with no arguments. The hook should return non-zero
+after issuing an appropriate message if it wants to stop the commit.
+
+</li>
+<li><em>on <b>:pre_rebase</b> do</em> - Run just before
+&#8220;git-rebase&#8221; starts doing its job, and can prevent the command
+from running by exiting with non-zero status.
+
+</li>
+<li><em>on <b>:prepare_commit_msg</b> do |commit_msg_path,commit_src|</em> -
+Prepare the commit log message. Called by git-commit with the name of the
+file that has the commit message, followed by the description of the commit
+message&#8217;s source. The hook&#8217;s purpose is to edit the commit
+message file. If the hook returns non-zero status, the commit is aborted.
+
+</li>
+</ul>
+<p>
+In case of an unrescue exception rgithook will show a warning with the
+error and return 255 to git. In case of more than one block for the same
+hook, rgithook return to git the max value of all returns values of the
+same hook
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="on-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 101</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on</span>(<span class="ruby-identifier">hook</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;No block given for #{hook.to_s} in #{caller[0]}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">HOOKS</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">hook</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:background</span>)
+               <span class="ruby-ivar">@_bg_hooks</span>[<span class="ruby-identifier">hook</span>] <span class="ruby-operator">||=</span> []
+               <span class="ruby-ivar">@_bg_hooks</span>[<span class="ruby-identifier">hook</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+            <span class="ruby-keyword kw">else</span>
+               <span class="ruby-ivar">@_hooks</span>[<span class="ruby-identifier">hook</span>] <span class="ruby-operator">||=</span> []
+               <span class="ruby-ivar">@_hooks</span>[<span class="ruby-identifier">hook</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+            <span class="ruby-keyword kw">end</span>
+         <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Not available hook #{hook.to_s} in #{caller[0]}&quot;</span>
+         <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="repo-method" class="method-detail">
+			
+				<a name="repo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">repo</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="repo-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 156</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">repo</span>
+         <span class="ruby-ivar">@_repo</span>
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="run-method" class="method-detail">
+			
+				<a name="run"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run</span><span 
+						class="method-args">(code,file=nil,line=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Run arbitrary code in runner context
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="run-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 118</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>,<span class="ruby-identifier">line</span>=<span class="ruby-keyword kw">nil</span>)
+         <span class="ruby-identifier">file</span>,<span class="ruby-identifier">line</span> = <span class="ruby-identifier">caller</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>
+         <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">binding</span>,<span class="ruby-identifier">file</span>,<span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="run-background-hooks-method" class="method-detail">
+			
+				<a name="run_background_hooks"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run_background_hooks</span><span 
+						class="method-args">(hook_name, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Execute all the hooks in a new process Return an array with the pids of
+each hook process
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="run-background-hooks-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 148</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_background_hooks</span>(<span class="ruby-identifier">hook_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+         <span class="ruby-identifier">ret_vals</span> = []
+         <span class="ruby-ivar">@_bg_hooks</span>[<span class="ruby-identifier">hook_name</span>.<span class="ruby-identifier">to_sym</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@_bg_hooks</span>[<span class="ruby-identifier">hook_name</span>.<span class="ruby-identifier">to_sym</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">ret_vals</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fork</span> {<span class="ruby-identifier">hook</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+         <span class="ruby-keyword kw">end</span>
+         <span class="ruby-identifier">ret_vals</span>
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="run-foreground-hooks-method" class="method-detail">
+			
+				<a name="run_foreground_hooks"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run_foreground_hooks</span><span 
+						class="method-args">(hook_name,*args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="run-foreground-hooks-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 138</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_foreground_hooks</span>(<span class="ruby-identifier">hook_name</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+         <span class="ruby-identifier">ret_vals</span> = []
+         <span class="ruby-ivar">@_hooks</span>[<span class="ruby-identifier">hook_name</span>.<span class="ruby-identifier">to_sym</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@_hooks</span>[<span class="ruby-identifier">hook_name</span>.<span class="ruby-identifier">to_sym</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">ret_vals</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">hook</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+         <span class="ruby-keyword kw">end</span>
+         <span class="ruby-identifier">ret_vals</span>
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="run-hooks-method" class="method-detail">
+			
+				<a name="run_hooks"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run_hooks</span><span 
+						class="method-args">(hook_name, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Execute all the hooks defined in the configuration file Return a two
+dimension array. The first element is the outputs of the foreground_hooks.
+The second element is another array with the pids of the background_hooks
+</p>
+<pre>
+  fg_hook_val, bg_hook_val = @runner.run_hooks(hook_name)
+</pre>
+					
+					
+					
+					<div class="method-source-code" 
+						id="run-hooks-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/runner.rb, line 132</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_hooks</span>(<span class="ruby-identifier">hook_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+         [<span class="ruby-identifier">run_foreground_hooks</span>(<span class="ruby-identifier">hook_name</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>),<span class="ruby-identifier">run_background_hooks</span>(<span class="ruby-identifier">hook_name</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)]
+      <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with $DEBUG to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish 
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

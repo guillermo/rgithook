@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: RGitHook::TestCase</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript" 
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+	
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/rgithook/test/unit.rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/rgithook/test/unit.rb">lib/rgithook/test/unit.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Test::Unit::TestCase</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#create_rgithook_instance">create_rgithook_instance</a></li>
+					
+					<li><a href="#default_test">default_test</a></li>
+					
+					<li><a href="#in_sample_repo">in_sample_repo</a></li>
+					
+					<li><a href="#in_temp_dir">in_temp_dir</a></li>
+					
+					<li><a href="#mock_repo">mock_repo</a></li>
+					
+					<li><a href="#with_sample_new_rgithook">with_sample_new_rgithook</a></li>
+					
+					<li><a href="#with_sample_rgithook">with_sample_rgithook</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+	
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README.rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+			
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index 
+					<span class="search-toggle"><img src="../images/find.png" 
+						height="16" width="16" alt="[+]" 
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" 
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+				
+					<li><a href="../RGitHook.html">RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Base.html">RGitHook::Base</a></li>
+				
+				
+					<li><a href="../RGitHook/Base/ClassMethods.html">RGitHook::Base::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/CommandLine.html">RGitHook::CommandLine</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor.html">RGitHook::Editor</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor/ClassMethods.html">RGitHook::Editor::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Hook.html">RGitHook::Hook</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks.html">RGitHook::Hooks</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks/ClassMethods.html">RGitHook::Hooks::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation.html">RGitHook::Installation</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation/ClassMethods.html">RGitHook::Installation::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/RGitHook.html">RGitHook::RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Runner.html">RGitHook::Runner</a></li>
+				
+				
+					<li><a href="../RGitHook/TestCase.html">RGitHook::TestCase</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater.html">RGitHook::Updater</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater/ClassMethods.html">RGitHook::Updater::ClassMethods</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+			
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		
+		<h1 class="class">RGitHook::TestCase</h1>
+		
+
+		<div id="description">
+			
+		</div>
+
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+
+		
+			
+			<div id="create-rgithook-instance-method" class="method-detail">
+			
+				<a name="create_rgithook_instance"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create_rgithook_instance</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns initialized rgithook instance with a mocked repo.
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="create-rgithook-instance-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_rgithook_instance</span>
+      <span class="ruby-comment cmt"># This is not really a rgithook_instance ;-P</span>
+      <span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span><span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:parse_path</span>).<span class="ruby-identifier">with</span>(<span class="ruby-ivar">@repo</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-ivar">@repo</span>)
+      <span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span><span class="ruby-operator">::</span><span class="ruby-constant">Runner</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:new</span>).<span class="ruby-identifier">with</span>(<span class="ruby-ivar">@repo</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-ivar">@runner</span>)
+      <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:load</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">'hooks_file'</span>)
+      <span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span><span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span>.<span class="ruby-identifier">any_instance</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:hooks_file</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">'hooks_file'</span>)
+      <span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span><span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@repo</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="default-test-method" class="method-detail">
+			
+				<a name="default_test"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">default_test</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Default test to make test::unit ignore tests_classes withot tests
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="default-test-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 5</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_test</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="in-sample-repo-method" class="method-detail">
+			
+				<a name="in_sample_repo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">in_sample_repo</span><span 
+						class="method-args">(options = {}) {|::Grit::Repo.new(temp_file)| ...}</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs block in a temp repo. The block receive the new Grit::Repo as an
+argument By default, the repo is a non-bare repo.
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="in-sample-repo-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_sample_repo</span>(<span class="ruby-identifier">options</span> = {},<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">in_temp_dir</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">temp_file</span><span class="ruby-operator">|</span>
+        <span class="ruby-node">%x(unzip #{fixture_path('sample_repo.zip')} #{without_output})</span>
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-operator">::</span><span class="ruby-constant">Grit</span><span class="ruby-operator">::</span><span class="ruby-constant">Repo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">temp_file</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="in-temp-dir-method" class="method-detail">
+			
+				<a name="in_temp_dir"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">in_temp_dir</span><span 
+						class="method-args">() {|tmpdir| ...}</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs block in a temp dir
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="in-temp-dir-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_temp_dir</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">old_dir</span>,<span class="ruby-identifier">ret_val</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-comment cmt"># Don't use mktemp from system since osx and linux mktemp are diferentes.</span>
+      <span class="ruby-identifier">tmpdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">tmpdir</span>,<span class="ruby-value str">'rgithook-'</span><span class="ruby-operator">+</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">usec</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]))
+      
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">tmpdir</span>)
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-identifier">tmpdir</span>
+      <span class="ruby-identifier">ret_val</span> = <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">tmpdir</span>
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-identifier">old_dir</span>
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">remove_dir</span>(<span class="ruby-identifier">tmpdir</span>)
+      <span class="ruby-identifier">ret_val</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="mock-repo-method" class="method-detail">
+			
+				<a name="mock_repo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">mock_repo</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns a mocked grit_repo able to run with rgithook
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="mock-repo-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 9</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mock_repo</span>
+      <span class="ruby-identifier">repo</span> = <span class="ruby-identifier">mock</span>(<span class="ruby-value str">'grit_repo'</span>)
+      <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-value str">'is_a?'</span>.<span class="ruby-identifier">to_sym</span>).<span class="ruby-identifier">with</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Grit</span><span class="ruby-operator">::</span><span class="ruby-constant">Repo</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:path</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">'path'</span>)
+      <span class="ruby-identifier">repo</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="with-sample-new-rgithook-method" class="method-detail">
+			
+				<a name="with_sample_new_rgithook"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">with_sample_new_rgithook</span><span 
+						class="method-args">() {|@rgithook| ...}</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs block in a sample repo and yields rgithook
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="with-sample-new-rgithook-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_sample_new_rgithook</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">in_sample_repo</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@rgithook</span> = <span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span><span class="ruby-operator">::</span><span class="ruby-constant">RGitHook</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">repo</span>)
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-ivar">@rgithook</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="with-sample-rgithook-method" class="method-detail">
+			
+				<a name="with_sample_rgithook"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">with_sample_rgithook</span><span 
+						class="method-args">() {|@rgithook| ...}</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs block in a sample repo with rgithook installed
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="with-sample-rgithook-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/test/unit.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_sample_rgithook</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">with_sample_new_rgithook</span> <span class="ruby-keyword kw">do</span> 
+        <span class="ruby-ivar">@rgithook</span>.<span class="ruby-identifier">install</span>(<span class="ruby-keyword kw">false</span>)
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-ivar">@rgithook</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with $DEBUG to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish 
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

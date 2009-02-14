@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: RGitHook::Base</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript" 
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript" 
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+	
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/rgithook/rgithook/base.rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/rgithook/rgithook/base.rb">lib/rgithook/rgithook/base.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">Module</span> <a href="Base/ClassMethods.html" class="link">RGitHook::Base::ClassMethods</a><br />
+</li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#bare?">bare?</a></li>
+					
+					<li><a href="#hooks_file">hooks_file</a></li>
+					
+					<li><a href="#new">new</a></li>
+					
+					<li><a href="#path">path</a></li>
+					
+					<li><a href="#project_name">project_name</a></li>
+					
+					<li><a href="#run">run</a></li>
+					
+					<li><a href="#working_path">working_path</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+	
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README.rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+			
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index 
+					<span class="search-toggle"><img src="../images/find.png" 
+						height="16" width="16" alt="[+]" 
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" 
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+				
+					<li><a href="../RGitHook.html">RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Base.html">RGitHook::Base</a></li>
+				
+				
+					<li><a href="../RGitHook/Base/ClassMethods.html">RGitHook::Base::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/CommandLine.html">RGitHook::CommandLine</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor.html">RGitHook::Editor</a></li>
+				
+				
+					<li><a href="../RGitHook/Editor/ClassMethods.html">RGitHook::Editor::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Hook.html">RGitHook::Hook</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks.html">RGitHook::Hooks</a></li>
+				
+				
+					<li><a href="../RGitHook/Hooks/ClassMethods.html">RGitHook::Hooks::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation.html">RGitHook::Installation</a></li>
+				
+				
+					<li><a href="../RGitHook/Installation/ClassMethods.html">RGitHook::Installation::ClassMethods</a></li>
+				
+				
+					<li><a href="../RGitHook/RGitHook.html">RGitHook::RGitHook</a></li>
+				
+				
+					<li><a href="../RGitHook/Runner.html">RGitHook::Runner</a></li>
+				
+				
+					<li><a href="../RGitHook/TestCase.html">RGitHook::TestCase</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater.html">RGitHook::Updater</a></li>
+				
+				
+					<li><a href="../RGitHook/Updater/ClassMethods.html">RGitHook::Updater::ClassMethods</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+			
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		
+		<h1 class="module">RGitHook::Base</h1>
+		
+
+		<div id="description">
+			
+		</div>
+
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+
+		
+			
+			<div id="new-method" class="method-detail">
+			
+				<a name="new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span 
+						class="method-args">(repo_or_path)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Initialize a new instance of rgithook in the given repo or path
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 10</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">repo_or_path</span>)
+       <span class="ruby-ivar">@repo</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">parse_path</span>(<span class="ruby-identifier">repo_or_path</span>)
+       <span class="ruby-ivar">@runner</span>    = <span class="ruby-constant">Runner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@repo</span>)
+       <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">hooks_file</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+
+		
+			
+			<div id="bare--method" class="method-detail">
+			
+				<a name="bare?"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">bare?</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns true on bare repo.
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="bare--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 42</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bare?</span>
+       <span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">bare</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="hooks-file-method" class="method-detail">
+			
+				<a name="hooks_file"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">hooks_file</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="hooks-file-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hooks_file</span>
+       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">hooks_file</span>(<span class="ruby-ivar">@repo</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="path-method" class="method-detail">
+			
+				<a name="path"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">path</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the path of the current repo
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="path-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 32</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path</span>
+       <span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">path</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="project-name-method" class="method-detail">
+			
+				<a name="project_name"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">project_name</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Extract the projects name
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="project-name-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">project_name</span>
+       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">bare</span>
+          <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">path</span>) <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/(.*).git/</span>
+          <span class="ruby-identifier">$1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">bare</span>
+       <span class="ruby-keyword kw">else</span>
+          <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">working_dir</span>)
+       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="run-method" class="method-detail">
+			
+				<a name="run"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run</span><span 
+						class="method-args">(code,file=nil,line=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Run some code in the runner binding
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="run-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>,<span class="ruby-identifier">line</span>=<span class="ruby-keyword kw">nil</span>)
+       <span class="ruby-ivar">@runner</span>.<span class="ruby-identifier">run</span>(<span class="ruby-identifier">code</span>,<span class="ruby-identifier">file</span>,<span class="ruby-identifier">line</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+
+		
+			
+			<div id="working-path-method" class="method-detail">
+			
+				<a name="working_path"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">working_path</span><span 
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the path of the working dir or nil if it is a bare repo
+</p>
+					
+					
+					
+					<div class="method-source-code" 
+						id="working-path-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/rgithook/rgithook/base.rb, line 37</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">working_path</span>
+       <span class="ruby-ivar">@repo</span>.<span class="ruby-identifier">working_dir</span>
+    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with $DEBUG to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish 
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
