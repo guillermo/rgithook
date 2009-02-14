@@ -1,3 +1,5 @@
+v3.0.4 Remove plugins and some refactor
+v3.0.3 Updated dependencies
 v3.0.2 Hooks now returns a good value, so no action is stoped
 v3.0.1 New methods and new tests
 v3.0.0 Second big refactoring

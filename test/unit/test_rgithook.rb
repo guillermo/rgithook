@@ -37,7 +37,7 @@ module RGitHook
 
       def test_class_call_editor
          RGitHook.stubs(:parse_path).with(:repo).returns(mock_repo)
-         RGitHook.expects(:conf_file).returns(:file)
+         RGitHook.expects(:hooks_file).returns(:file)
          RGitHook.expects(:system).with('vi',:file )
          RGitHook.call_editor(:repo)
       end

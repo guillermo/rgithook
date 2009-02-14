@@ -8,9 +8,12 @@ module RGitHook
   
   #Since these gem use Dir.pwd it must save the location of the files at start up
   PATH=File.dirname(File.expand_path(__FILE__))
-
-  require File.join('rgithook', 'runner')  
-  require File.join('rgithook', 'rgithook')
+  HOOKS = %w(applypatch_msg commit_msg post_commit post_receive post_update
+    pre_applypatch pre_commit pre_rebase prepare_commit_msg  update)
+    
+  require 'rgithook/runner'
+  require 'rgithook/rgithook'
+  
   self.autoload(:Hook, File.join(PATH,'rgithook', 'hook'))
   self.autoload(:CommandLine, File.join(PATH,'rgithook','command_line'))
 

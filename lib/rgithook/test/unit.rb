@@ -8,7 +8,7 @@ module RGitHook
     # returns a mocked grit_repo able to run with rgithook
     def mock_repo
       repo = mock('grit_repo')
-      repo.stubs(:'is_a?').with(::Grit::Repo).returns(true)
+      repo.stubs('is_a?'.to_sym).with(::Grit::Repo).returns(true)
       repo.stubs(:path).returns('path')
       repo
     end

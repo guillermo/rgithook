@@ -22,7 +22,7 @@ class IntegrationTest < RGitHook::TestCase
 
    def test_simple_hook
       with_sample_rgithook do
-         File.open(@rgithook.conf_file,'w') do |f|
+         File.open(@rgithook.hooks_file,'w') do |f|
         hook_file =<<-EOF
         on :post_receive do |old_commit,new_commit,ref|
           %x(touch \#{old_commit})

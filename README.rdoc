@@ -1,12 +1,24 @@
 = RGitHook
 
-RGitHook is:
-  * GitHooks made easy
-  * Center all the hooks in one ruby file
-  * Plugin system for make concrete actions on hooks. (twitter, email, test, etc...)
-  
-You may want GINST. A configuration and web interface for projects
+RGitHook is a ruby wrapper to edit hooks. All hooks are stored in just one ruby file.
 
 = Install
 
-sudo gem install guillermo-rgithook
+  sudo gem install rgithook
+
+= Basic Usage
+
+  cd repo
+  rgithook --install
+  rgithook --edit    # Edit your hooks
+  
+And make some git action that make rgithook run.
+
+= Extend Usage.
+
+The typical use of rgithook is for post-receive hooks. These hook is invoked when a 
+remote machine push to ours.
+
+It can be run with bare repo or repos with a working tree.
+
+
