@@ -8,7 +8,6 @@ module RGitHook
          @_repo = repo
          @_hooks = {}
          @_bg_hooks = {}
-         @options = Plugin.options_to_hash
       end
 
       # Define a hook that is executed when git-commands call these hook
@@ -131,10 +130,8 @@ module RGitHook
       # The second element is another array with the pids of the background_hooks
       #   fg_hook_val, bg_hook_val = @runner.run_hooks(hook_name)
       def run_hooks(hook_name, *args)
-         Plugin.load!
          [run_foreground_hooks(hook_name,*args),run_background_hooks(hook_name,*args)]
       end
-
 
 
 
@@ -158,15 +155,6 @@ module RGitHook
 
       def repo
          @_repo
-      end
-
-      # Hash with all the plugin options
-      #   option[:PluginName][:option] => option_value
-      #
-      #   option[PluginClass.to_sym][:option_group][:option_name] => option_value
-      #
-      def options
-         @options
       end
 
       # ::nodoc::

@@ -2,7 +2,7 @@ require File.dirname(__FILE__)+'/../test_helper'
 
 module RGitHook
 
-   class RunnerTest < Test::Unit::TestCase
+   class RunnerTest < TestCase
       def setup
          @repo = mock('grit_repo')
          @repo.stubs(:'is_a?').with(::Grit::Repo).returns(true)
@@ -21,8 +21,6 @@ module RGitHook
 
          assert_instance_of Runner, Runner.new(@repo)
          runner = Runner.new @repo
-         assert runner.options[:SamplePlugin][:test_option], :default_value
-         assert runner.options[:SamplePlugin][:test_group][:test_option_group_option], :default_value
       end
 
       def test_on
@@ -37,7 +35,6 @@ module RGitHook
 
          mock = mock('test_class', :meth1 => 'meth1',:meth2 => 'meth2')
          runner.expects(:fork).times(2).returns(20)
-         Plugin.expects(:load!)
          
          runner.on(hook) {mock.meth1}
          runner.on(hook) {mock.meth2}
@@ -63,9 +60,9 @@ module RGitHook
 
       def test_run
          runner = Runner.new @repo
-         assert_raise SamplePluginException do
+         assert_raise RuntimeError do
             runner.run(<<-EOF
-            raised_method
+            raise 
             EOF
             )
 
@@ -83,13 +80,6 @@ module RGitHook
          runner.on(hook, :background => true) {mock.meth2}
 
          assert_equal runner.send(:run_background_hooks, hook), [20,20]
-      end
-
-      def test_options
-         runner = Runner.new @repo
-
-         assert runner.options[:SamplePlugin][:test_option], :default_value
-         assert runner.options[:SamplePlugin][:test_group][:test_option_group_option], :default_value
       end
    end
 end

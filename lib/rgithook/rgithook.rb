@@ -171,15 +171,6 @@ module RGitHook
          self.class.hooks_file(@repo)
       end
 
-      def self.plugin_conf_file(repo_or_path)
-         File.join(parse_path(repo_or_path).path,'hooks','rgithook.yaml')
-      end
-
-      def plugin_conf_file
-         self.class.plugin_conf_file(@repo)
-      end
-
-
       private
 
       def self.prompt(message)
@@ -218,12 +209,17 @@ module RGitHook
       # Initialize a new instance of rgithook in the given repo or path
       def initialize(repo_or_path)
          @repo = self.class.parse_path(repo_or_path)
-         Plugin.load!
          @runner    = Runner.new(@repo)
-         @runner.load_options(plugin_conf_file)
          @runner.load(hooks_file)
       end
-
+      
+      def in_repo_dir
+        old_dir = Dir.pwd
+        Dir.chdir @repo.bare ? @repo.path : @repo.working_tree
+        ret_val = yield
+        Dir.chdir old_dir
+        ret_val
+      end
 
    end
 end

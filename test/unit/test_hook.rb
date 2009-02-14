@@ -2,7 +2,7 @@ require File.dirname(__FILE__)+'/../test_helper'
 
 
 module RGitHook
-   class HookTest < Test::Unit::TestCase
+   class HookTest < TestCase
 
       def test_self_execute
          $0 = 'potatos-super-hook'

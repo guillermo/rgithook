@@ -1,7 +1,7 @@
 require File.dirname(__FILE__)+'/../test_helper'
 
 module RGitHook
-   class CommandLineTest < Test::Unit::TestCase
+   class CommandLineTest < TestCase
       def setup
          @repo = mock()
          @rgithook = mock()

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__)+'/../test_helper'
 
-class IntegrationTest < Test::Unit::TestCase
+class IntegrationTest < RGitHook::TestCase
 
    def test_inastall_without_confirmation
       in_sample_repo do
@@ -55,14 +55,4 @@ class IntegrationTest < Test::Unit::TestCase
       end
    end
 
-   def test_plugin_options
-
-      in_sample_repo do
-         @repo = RGitHook::RGitHook.new('.')
-         @repo.install(false)
-         @repo.save_plugin_options
-         assert File.file?('.git/hooks/rgithook.yaml')
-
-      end
-   end
 end
